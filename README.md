@@ -14,7 +14,7 @@ The human approves on the app, or explicitly grants capped postage and then send
 | `usmail-mcp` skill | How to prepare a job, stop at the proof, surface address quality, and hand approval to the human. |
 | `assets/logo.svg` | Repo-hosted mark for the plugin listing. |
 
-Live agent instructions (version c5d30e33): [https://www.usmail.ai/skills.md](https://www.usmail.ai/skills.md).
+Live agent instructions: [https://www.usmail.ai/skills.md](https://www.usmail.ai/skills.md). Read the Version line there.
 
 Account, privacy, and terms: [usmail.ai](https://www.usmail.ai), [privacy](https://www.usmail.ai/privacy), [terms](https://www.usmail.ai/terms). MCP docs: [https://www.usmail.ai/docs/mcp](https://www.usmail.ai/docs/mcp).
 
