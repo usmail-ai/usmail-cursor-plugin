@@ -1,0 +1,7 @@
+{
+  "name": "usmail-cursor-plugin",
+  "private": true,
+  "scripts": {
+    "test": "node scripts/check-account-status-skill.mjs"
+  }
+}
