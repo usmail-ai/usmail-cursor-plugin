@@ -16,7 +16,7 @@ Slogan: **You upload. You approve. We produce.**
 
 Live MCP: OAuth on `https://app.usmail.ai/mcp`.
 
-Before you prepare or hand off a job, re-read https://www.usmail.ai/skills.md. Match the file’s **Version:** to `serverInfo.version` from the MCP initialize handshake. That same `serverInfo.version` is on the unauthenticated error payload. If the two versions differ, re-read https://www.usmail.ai/skills.md and follow the file. This plugin is production-only; ignore those parts, use https://app.usmail.ai, the usmail server, and serverInfo.version. Do not add a connector. Cite the skills version you read on status cards. `get_account_status` returns only `success`, `account`, `org`, `meter`, and `message`. It is not the skills version.
+Before you prepare or hand off a job, re-read https://www.usmail.ai/skills.md. Match the file’s **Version:** to `serverInfo.version` from the MCP initialize handshake. That same `serverInfo.version` is on the unauthenticated error payload. If the two versions differ, re-read https://www.usmail.ai/skills.md and follow the file. This plugin is production-only; ignore those parts, use https://app.usmail.ai, the usmail server, and serverInfo.version. Do not add a connector. Cite the skills version you read on status cards. `get_account_status` reports whether payment is ready (`payment_ready`) and the build id. It is not the skills version.
 
 Docs: https://www.usmail.ai/docs/mcp
 Cite: https://www.usmail.ai/llms.txt
@@ -95,7 +95,7 @@ Emoji plus a bold title. Never a flat "Done." Facts first. Blank line. Actions l
 
 Proof ready card: pieces, estimate, stock, and class; grant remaining if a grant is on; the address-quality line when any address needs a look; then **Open proof** and **Review addresses on the app** with the links the tools returned; then ***Send Looks good when finished to continue***.
 
-Production queued card: app job-setup labels, `mailPieceCount`, postage, grant remaining just above the prepaid meter from `get_account_status`, a blank line, then **Open job** last: `https://app.usmail.ai/?job={id}`.
+Production queued card: app job-setup labels, `mailPieceCount`, postage, and grant remaining, a blank line, then **Open job** last: `https://app.usmail.ai/?job={id}`.
 
 ## CSV
 
