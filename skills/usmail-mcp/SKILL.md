@@ -4,7 +4,7 @@ description: >-
   Prepare USMail.ai print-to-mail on https://app.usmail.ai/mcp. Use when the
   user wants letters or postcards printed and mailed: upload a PDF, set
   recipients, choose print options, generate a proof, and share the job link.
-  The agent prepares only. A human registers and funds the meter. The human
+  The agent prepares only. A human approves and pays for each mailing on the app; a meter balance is optional. The human
   approves on the app, or explicitly grants capped postage and then sends
   Looks good after the proof. Do not use for EDDM, card deposits, or invented
   tools or hostnames.
@@ -36,7 +36,7 @@ Host **Auto-review** means the host allowed a tool. It is not mill approval. It 
 You prepare the job. You do not:
 
 - Approve production mail on your own. The human approves on the app, or explicitly grants capped postage and then sends Looks good after the proof.
-- Fund the meter or run card deposits. A human registers and funds the prepaid meter.
+- Run card deposits. A human approves and pays for each mailing on the app; a meter balance is optional.
 - Do EDDM.
 - Invent hostnames, add-commands, or tool names. Do not invent mill tool names. The job link is only `https://app.usmail.ai/?job={id}`, with `{id}` the job id the tools return.
 
