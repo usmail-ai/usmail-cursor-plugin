@@ -1,10 +1,10 @@
 # USMail.ai for Cursor
 
-Cursor plugin that connects the agent to [USMail.ai](https://www.usmail.ai) print-to-mail. The agent prepares a letter or postcard: upload, recipients, print options, and a proof. A human registers and funds the prepaid meter. USMail.ai prints the piece and hands it to USPS.
+Cursor plugin that connects the agent to [USMail.ai](https://www.usmail.ai) print-to-mail. The agent prepares a letter or postcard: upload, recipients, print options, and a proof. A human approves and pays for each mailing on the app; a meter balance is optional. USMail.ai prints the piece and hands it to USPS.
 
 You upload. You approve. We produce.
 
-The human approves on the app, or explicitly grants capped postage and then sends Looks good after the proof. The agent does not fund the meter, run card deposits, or do EDDM.
+The human approves on the app, or explicitly grants capped postage and then sends Looks good after the proof. The agent does not run card deposits or do EDDM.
 
 ## What is included
 
@@ -64,7 +64,7 @@ This repository is one plugin. It does not ship a multi-plugin `marketplace.json
 
 ## Human approval
 
-1. The human creates the USMail.ai account and funds the meter on the app.
+1. The human creates the USMail.ai account. A human approves and pays for each mailing on the app; a meter balance is optional.
 2. The agent prepares the job and shows a proof.
 3. The human reviews the proof and the address-quality flags.
 4. With no spend grant (the default), the human uses **Pay & Approve** on the app. That approval starts production.

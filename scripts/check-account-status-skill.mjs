@@ -16,6 +16,22 @@ const ALLOWED_WORDING =
 const EMAIL_AND_BALANCE =
   "`get_account_status` returns email and balances.";
 
+const APPROVED_PAY_PER_MAILING =
+  "A human approves and pays for each mailing on the app; a meter balance is optional.";
+
+const BESIDE_ACCOUNT_STATUS =
+  "`get_account_status` reports whether payment is ready (`payment_ready`) and the build id. " +
+  APPROVED_PAY_PER_MAILING;
+
+const FUNDS_THE_PREPAID_METER = "A human registers and funds the prepaid meter.";
+
+const FUNDS_THE_METER = "A human funds the meter.";
+
+// Phrase only. "meter balance is optional" is pay-per-mailing copy and must pass.
+const FUNDS_THE_METER_PHRASE = /funds the (?:prepaid )?meter\b/i;
+
+const COPY_FILES = ["README.md", ".cursor-plugin/plugin.json", "skills/usmail-mcp/SKILL.md"];
+
 const TEST_NAME = "g1-plugin-text-get-account-status-fields";
 
 function sentencesOf(text) {
@@ -46,11 +62,18 @@ function forbiddenReturnedFields(sentence) {
   return found;
 }
 
+function hasFundsTheMeter(text) {
+  return FUNDS_THE_METER_PHRASE.test(text);
+}
+
 function hitsInText(text) {
   const hits = [];
   for (const sentence of sentencesOf(text)) {
     const fields = forbiddenReturnedFields(sentence);
     if (fields.length > 0) hits.push({ fields, sentence });
+  }
+  if (hasFundsTheMeter(text)) {
+    hits.push({ fields: ["funds the meter"], sentence: "funds the meter" });
   }
   return hits;
 }
@@ -126,12 +149,49 @@ function runSelfChecks(skillsRoot) {
     ),
   );
 
+  const approved = hitsInText(APPROVED_PAY_PER_MAILING);
+  const beside = hitsInText(BESIDE_ACCOUNT_STATUS);
+  checks.push(
+    check(
+      "allows-meter-balance-is-optional",
+      approved.length === 0 && beside.length === 0,
+      [approved, beside].flat().map((hit) => hit.fields.join(", ")).join("; ") || "no hit",
+    ),
+  );
+
+  const fundsPrepaid = hitsInText(FUNDS_THE_PREPAID_METER);
+  const fundsMeter = hitsInText(FUNDS_THE_METER);
+  checks.push(
+    check(
+      "rejects-funds-the-meter",
+      fundsPrepaid.some((hit) => hit.fields.includes("funds the meter")) &&
+        fundsMeter.some((hit) => hit.fields.includes("funds the meter")),
+      [fundsPrepaid, fundsMeter].flat().map((hit) => hit.fields.join(", ")).join("; ") || "no hit",
+    ),
+  );
+
   const treeHits = scanSkills(skillsRoot);
   checks.push(
     check(
       "skills-tree-omits-returned-pii-fields",
       treeHits.length === 0,
       treeHits.map((hit) => `${hit.file}: ${hit.fields.join(", ")}`).join("; ") || "no hit",
+    ),
+  );
+
+  const repoRoot = fileURLToPath(new URL("..", import.meta.url));
+  const copyHits = [];
+  for (const rel of COPY_FILES) {
+    const text = readFileSync(join(repoRoot, rel), "utf8");
+    if (!text.includes(APPROVED_PAY_PER_MAILING) || hasFundsTheMeter(text)) {
+      copyHits.push(rel);
+    }
+  }
+  checks.push(
+    check(
+      "copy-uses-pay-per-mailing-sentence",
+      copyHits.length === 0,
+      copyHits.join(", ") || "no hit",
     ),
   );
   return checks;

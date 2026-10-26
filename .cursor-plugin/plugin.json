@@ -1,8 +1,8 @@
 {
   "name": "usmail",
   "displayName": "USMail.ai",
-  "description": "Prepare USMail.ai print-to-mail in Cursor. The agent uploads, configures, and generates a proof. A human funds the meter and approves production on the app.",
-  "version": "0.2.0",
+  "description": "Prepare USMail.ai print-to-mail in Cursor. The agent uploads, configures, and generates a proof. A human approves and pays for each mailing on the app; a meter balance is optional.",
+  "version": "0.2.1",
   "author": {
     "name": "USMail.ai",
     "email": "info@usmail.com",
