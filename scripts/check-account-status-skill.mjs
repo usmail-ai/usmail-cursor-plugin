@@ -21,6 +21,11 @@ const RETURNS_USERNAME = "`get_account_status` returns username.";
 const APPROVED_PAY_PER_MAILING =
   "A human approves and pays for each mailing on the app; a meter balance is optional.";
 
+// Marketplace description is this short line. It cannot also carry the
+// pay-per-mailing sentence (that sentence stays required in the README and skill).
+const APPROVED_DESCRIPTION =
+  "Prepare letters and postcards to print and mail through USPS.";
+
 const BESIDE_ACCOUNT_STATUS =
   "`get_account_status` reports whether payment is ready (`payment_ready`) and the build id. " +
   APPROVED_PAY_PER_MAILING;
@@ -194,9 +199,10 @@ function runSelfChecks(skillsRoot) {
   const copyHits = [];
   for (const rel of COPY_FILES) {
     const text = readFileSync(join(repoRoot, rel), "utf8");
-    if (!text.includes(APPROVED_PAY_PER_MAILING) || hasFundsTheMeter(text)) {
-      copyHits.push(rel);
-    }
+    const required = rel.endsWith("plugin.json")
+      ? text.includes(APPROVED_DESCRIPTION)
+      : text.includes(APPROVED_PAY_PER_MAILING);
+    if (!required || hasFundsTheMeter(text)) copyHits.push(rel);
   }
   checks.push(
     check(

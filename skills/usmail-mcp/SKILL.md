@@ -12,8 +12,6 @@ description: >-
 
 # USMail.ai MCP
 
-Slogan: **You upload. You approve. We produce.**
-
 Live MCP: OAuth on `https://app.usmail.ai/mcp`.
 
 Before you prepare or hand off a job, re-read https://www.usmail.ai/skills.md. Match the file’s **Version:** to `serverInfo.version` from the MCP initialize handshake. That same `serverInfo.version` is on the unauthenticated error payload. If the two versions differ, re-read https://www.usmail.ai/skills.md and follow the file. This plugin is production-only; ignore those parts, use https://app.usmail.ai, the usmail server, and serverInfo.version. Do not add a connector. Cite the skills version you read on status cards. `get_account_status` reports whether payment is ready (`payment_ready`) and the build id. It is not the skills version.
