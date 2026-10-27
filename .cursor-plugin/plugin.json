@@ -2,7 +2,7 @@
   "name": "usmail",
   "displayName": "USMail.ai",
   "description": "Prepare letters and postcards to print and mail through USPS.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "minClientVersions": {
     "cursor": "3.13.0"
   },

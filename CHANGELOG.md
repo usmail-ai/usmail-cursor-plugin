@@ -2,6 +2,10 @@
 
 All notable changes to this plugin will be documented here.
 
+## 0.3.1
+
+- Logo matches www.usmail.ai favicon.
+
 ## 0.3.0
 
 - Marketplace description: Prepare letters and postcards to print and mail through USPS.
