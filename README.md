@@ -41,7 +41,7 @@ This repository is one plugin. It does not ship a multi-plugin `marketplace.json
 
 One production server, `usmail`, at `https://app.usmail.ai/mcp`. Auth is OAuth. No API key is stored in this repo.
 
-The listing logo is `assets/logo.png` (192×192).
+The listing logo is `assets/logo.png` (1024×1024), the envelope mark.
 
 ## What agents can do
 

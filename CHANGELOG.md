@@ -2,6 +2,10 @@
 
 All notable changes to this plugin will be documented here.
 
+## 0.3.2
+
+- Listing logo is the envelope only (`assets/logo.png`, 1024×1024): the blue envelope and its speed stripes, redrawn with a thin white outline so the same colors hold on a light or dark tile. No wordmark, .AI badge, or stripe band. The plugin name is already the title next to the logo.
+
 ## 0.3.1
 
 - Logo matches www.usmail.ai favicon.

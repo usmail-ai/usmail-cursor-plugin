@@ -1,6 +1,6 @@
 {
   "name": "usmail-cursor-plugin",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": true,
   "scripts": {
     "test": "node scripts/check-account-status-skill.mjs"
