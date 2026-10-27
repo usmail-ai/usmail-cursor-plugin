@@ -1,12 +1,14 @@
 {
   "name": "usmail",
   "displayName": "USMail.ai",
-  "description": "Prepare USMail.ai print-to-mail in Cursor. The agent uploads, configures, and generates a proof. A human approves and pays for each mailing on the app; a meter balance is optional.",
-  "version": "0.2.1",
+  "description": "Prepare letters and postcards to print and mail through USPS.",
+  "version": "0.3.0",
+  "minClientVersions": {
+    "cursor": "3.13.0"
+  },
   "author": {
     "name": "USMail.ai",
-    "email": "info@usmail.com",
-    "url": "https://www.usmail.ai"
+    "email": "info@usmail.ai"
   },
   "publisher": "USMail.ai",
   "homepage": "https://www.usmail.ai",
@@ -14,13 +16,13 @@
   "license": "MIT",
   "keywords": [
     "print-to-mail",
-    "direct mail",
-    "USPS mail",
-    "mail automation",
-    "MCP",
+    "direct-mail",
+    "usps",
+    "mail-automation",
+    "mcp",
     "usmail"
   ],
-  "logo": "assets/logo.svg",
+  "logo": "assets/logo.png",
   "category": "integrations",
   "tags": [
     "print-to-mail",
