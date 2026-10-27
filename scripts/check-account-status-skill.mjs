@@ -2,7 +2,7 @@ import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const FORBIDDEN = ["account", "org", "meter", "email", "balance"];
+const FORBIDDEN = ["account", "org", "meter", "email", "balance", "username"];
 
 const AUDITED_RETURN_LIST =
   "`get_account_status` returns only `success`, `account`, `org`, `meter`, and `message`. It is not the skills version.";
@@ -15,6 +15,8 @@ const ALLOWED_WORDING =
 
 const EMAIL_AND_BALANCE =
   "`get_account_status` returns email and balances.";
+
+const RETURNS_USERNAME = "`get_account_status` returns username.";
 
 const APPROVED_PAY_PER_MAILING =
   "A human approves and pays for each mailing on the app; a meter balance is optional.";
@@ -137,6 +139,15 @@ function runSelfChecks(skillsRoot) {
         (hit) => hit.fields.includes("email") && hit.fields.includes("balance"),
       ),
       emailAndBalance.map((hit) => hit.fields.join(", ")).join("; ") || "no hit",
+    ),
+  );
+
+  const returnsUsername = hitsInText(RETURNS_USERNAME);
+  checks.push(
+    check(
+      "rejects-username",
+      returnsUsername.some((hit) => hit.fields.includes("username")),
+      returnsUsername.map((hit) => hit.fields.join(", ")).join("; ") || "no hit",
     ),
   );
 
